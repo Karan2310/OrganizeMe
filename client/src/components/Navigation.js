@@ -64,7 +64,7 @@ function NavbarLink({ icon: Icon, label, active, onClick }) {
 }
 
 const tabs = [
-  { icon: IconChecklist, label: "Home", path: "/" },
+  { icon: IconChecklist, label: "My Tasks", path: "/" },
   { icon: IconCircleCheckFilled, label: "Tasks Completed", path: "/completed" },
 ];
 
