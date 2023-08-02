@@ -6,6 +6,7 @@ import {
   UnstyledButton,
   createStyles,
   Stack,
+  Avatar,
   rem,
 } from "@mantine/core";
 import {
@@ -13,7 +14,6 @@ import {
   IconChecklist,
   IconLogout,
 } from "@tabler/icons-react";
-import { MantineLogo } from "@mantine/ds";
 import { NavLink, useLocation } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
@@ -91,7 +91,9 @@ export function Navigation() {
   return (
     <Navbar height={"100%"} width={{ base: 80 }} p="md">
       <Center>
-        <MantineLogo type="mark" size={30} />
+        <Avatar color="blue" radius="xl" size={"2.5rem"}>
+          MK
+        </Avatar>
       </Center>
       <Navbar.Section grow mt={50}>
         <Stack justify="center" spacing={0}>

@@ -37,13 +37,13 @@ const TasksPending = () => {
     {
       title: "Sample Todo",
       priority: "High",
-      due_date: new Date("2023-08-10"),
+      due_date: new Date("2029-09-10"),
       is_completed: false,
     },
   ];
   return (
     <div>
-      <Grid align="stretch">
+      <Grid gutter="xl">
         {todo &&
           todo.map((todo, index) => {
             const { title, priority, due_date, is_completed } = todo;
