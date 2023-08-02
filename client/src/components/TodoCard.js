@@ -7,8 +7,9 @@ import {
   Box,
   Button,
   Grid,
+  ActionIcon,
 } from "@mantine/core";
-import { IconFlag2Filled } from "@tabler/icons-react";
+import { IconFlag2Filled, IconTrash } from "@tabler/icons-react";
 
 const TodoCard = ({ title, priority, due_date, is_completed, daysLeft }) => {
   let badgeContent;
@@ -58,7 +59,15 @@ const TodoCard = ({ title, priority, due_date, is_completed, daysLeft }) => {
             <Avatar color={priorityContent} radius="xl">
               <IconFlag2Filled size="1rem" />
             </Avatar>
-            {badgeContent}
+            <div style={{ display: "flex", alignItems: "center" }}>
+              {badgeContent}
+
+              {!is_completed && (
+                <ActionIcon color="red" size={"1.6rem"} ml={10} p={3}>
+                  <IconTrash />
+                </ActionIcon>
+              )}
+            </div>
           </Group>
           <Text fz="lg" fw={500} mt="md">
             {title}
