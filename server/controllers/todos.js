@@ -5,8 +5,7 @@ export const getAllTodos = async (req, res) => {
   try {
     const userId = req.params.userId;
     const user = await User.findById(userId);
-    // const todos = await User.find().sort({ updatedAt: -1 });
-    res.status(200).json(user);
+    res.status(200).json(user.todos);
   } catch (error) {
     res.status(500).json(error);
   }
@@ -65,23 +64,26 @@ export const deleteTodo = async (req, res) => {
 };
 
 export const markTodoComplete = async (req, res) => {
-  // try {
-  //   const userId = req.params.userId;
-  //   const user = await User.findById(userId);
-  //   if (!user) {
-  //     return res.status(404).json({ message: "User not found." });
-  //   }
-  //   const todoId = req.params.todoId;
-  //   const todoIndex = user.todos.findIndex(
-  //     (todo) => todo._id.toString() === todoId
-  //   );
-  //   if (todoIndex === -1) {
-  //     return res.status(404).json({ message: "Todo not found." });
-  //   }
-  //   user.todos[todoIndex].is_completed = true;
-  //   await user.save();
-  //   res.status(200).json(user.todos[todoIndex]); // Return the updated todo
-  // } catch (error) {
-  //   res.status(500).json(error);
-  // }
+  try {
+    const userId = req.params.userId;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found." });
+    }
+
+    const todoId = req.params.todoId;
+    const todoIndex = user.todos.findIndex(
+      (todo) => todo._id.toString() === todoId
+    );
+    if (todoIndex === -1) {
+      return res.status(404).json({ message: "Todo not found." });
+    }
+
+    user.todos[todoIndex].is_completed = !user.todos[todoIndex].is_completed;
+    await user.updateOne({ todos: user.todos });
+
+    res.status(200).json(user.todos[todoIndex]);
+  } catch (error) {
+    res.status(500).json(error);
+  }
 };
