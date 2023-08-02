@@ -6,37 +6,37 @@ const TasksPending = () => {
   const todo = [
     {
       title: "Sample Todo",
-      priority: "High",
+      priority: "high",
       due_date: new Date("2023-08-10"),
       is_completed: false,
     },
     {
       title: "Sample Todo",
-      priority: "High",
+      priority: "high",
       due_date: new Date("2023-08-01"),
       is_completed: false,
     },
     {
       title: "Sample Todo",
-      priority: "High",
+      priority: "low",
       due_date: new Date("2023-08-14"),
       is_completed: false,
     },
     {
       title: "wjdbfiu yrgfiwyegdf icgeoiudhcdfocndfoicjneoidjnfbb gif",
-      priority: "High",
+      priority: "medium",
       due_date: new Date("2023-08-04"),
       is_completed: false,
     },
     {
       title: "Sample Todo",
-      priority: "High",
+      priority: "low",
       due_date: new Date("2023-08-10"),
       is_completed: false,
     },
     {
       title: "Sample Todo",
-      priority: "High",
+      priority: "medium",
       due_date: new Date("2029-09-10"),
       is_completed: false,
     },
