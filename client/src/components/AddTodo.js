@@ -1,12 +1,16 @@
-import React from "react";
-import { useDisclosure } from "@mantine/hooks";
+import React, { useState } from "react";
 import { Modal, Group, Button, TextInput, Select } from "@mantine/core";
 import { IconPlus } from "@tabler/icons-react";
 import { useForm } from "@mantine/form";
 import { DateInput } from "@mantine/dates";
+import { useCookies } from "react-cookie";
+import axios from "axios";
+import { SERVER_URL } from "../config";
 
-const AddTodo = () => {
-  const [opened, { open, close }] = useDisclosure(false);
+const AddTodo = ({ change, setChange }) => {
+  const [opened, setOpened] = useState(false);
+  const [cookies] = useCookies(["userId"]);
+  const [loading, setLoading] = useState(false);
   const today = new Date();
   const tomorrow = new Date();
   tomorrow.setDate(today.getDate() + 1);
@@ -51,11 +55,29 @@ const AddTodo = () => {
     form.setFieldValue("due_date", formatDateToISO(newDate));
   };
 
+  const addBlog = async (value) => {
+    setLoading(true);
+    try {
+      const { data } = await axios.post(
+        `${SERVER_URL}/todos/${cookies.userId}`,
+        value
+      );
+      setChange(!change);
+    } catch (err) {
+      alert("Error adding blog, try again");
+      console.log(err);
+    }
+    setLoading(false);
+    setOpened(false);
+    form.reset();
+  };
+
   return (
     <>
       <Modal
         opened={opened}
-        onClose={close}
+        onClose={() => setOpened(false)}
+        closeOnEscape={false}
         title="Add Todo"
         zIndex={100}
         portal
@@ -65,7 +87,7 @@ const AddTodo = () => {
           },
         }}
       >
-        <form onSubmit={form.onSubmit((values) => console.log(values))}>
+        <form onSubmit={form.onSubmit((values) => addBlog(values))}>
           <TextInput
             data-autoFocus
             withAsterisk
@@ -112,7 +134,7 @@ const AddTodo = () => {
 
       <Group position="center">
         <Button
-          onClick={open}
+          onClick={() => setOpened(true)}
           style={{
             position: "absolute",
             right: "6vw",

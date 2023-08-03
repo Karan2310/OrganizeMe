@@ -2,7 +2,7 @@ import React from "react";
 import TodoCard from "../components/TodoCard";
 import { Grid } from "@mantine/core";
 
-const TasksPending = ({ Todos }) => {
+const TasksPending = ({ Todos, setChange, change }) => {
   const incompleteTodos = Todos && Todos.filter((todo) => !todo.is_completed);
   return (
     <div>
@@ -10,8 +10,8 @@ const TasksPending = ({ Todos }) => {
         {incompleteTodos &&
           incompleteTodos
             .sort((a, b) => new Date(a.due_date) - new Date(b.due_date))
-            .map((todo, index) => {
-              const { title, priority, due_date, is_completed } = todo;
+            .map((todo) => {
+              const { title, priority, due_date, is_completed, _id } = todo;
               const oneDay = 24 * 60 * 60 * 1000;
               const currentDate = new Date();
               const dueDateObject = new Date(due_date); // Parse or convert due_date to Date object
@@ -20,7 +20,10 @@ const TasksPending = ({ Todos }) => {
               );
               return (
                 <TodoCard
-                  key={index}
+                  setChange={setChange}
+                  change={change}
+                  key={_id}
+                  id={_id}
                   title={title}
                   priority={priority}
                   due_date={due_date}

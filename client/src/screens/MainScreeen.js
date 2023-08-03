@@ -12,6 +12,7 @@ import { SERVER_URL } from "../config";
 const MainScreeen = () => {
   const [user, setUser] = useState({});
   const [cookies, removeCookie] = useCookies(["token", "userId"]);
+  const [change, setChange] = useState(true);
 
   const Navigate = useNavigate();
 
@@ -28,7 +29,6 @@ const MainScreeen = () => {
       };
       const { data } = await axios.get(`${SERVER_URL}/auth/verify`, config);
       setUser(data);
-      user && console.log(user.todo);
     } catch (err) {
       removeCookie("token");
       Navigate("/login");
@@ -37,7 +37,7 @@ const MainScreeen = () => {
 
   useEffect(() => {
     getUser();
-  }, []);
+  }, [change]);
   return (
     <>
       <div
@@ -60,14 +60,29 @@ const MainScreeen = () => {
           }}
         >
           <Routes>
-            <Route path="/" element={<TasksPending Todos={user.todos} />} />
+            <Route
+              path="/"
+              element={
+                <TasksPending
+                  Todos={user.todos}
+                  setChange={setChange}
+                  change={change}
+                />
+              }
+            />
             <Route
               path="/completed"
-              element={<TasksCompleted Todos={user.todos} />}
+              element={
+                <TasksCompleted
+                  Todos={user.todos}
+                  setChange={setChange}
+                  change={change}
+                />
+              }
             />
           </Routes>
         </div>
-        <AddTodo />
+        <AddTodo setChange={setChange} change={change} />
       </div>
     </>
   );

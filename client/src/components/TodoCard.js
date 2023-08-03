@@ -9,9 +9,21 @@ import {
   Grid,
   ActionIcon,
 } from "@mantine/core";
+import axios from "axios";
+import { SERVER_URL } from "../config";
+import { useCookies } from "react-cookie";
 import { IconFlag2Filled, IconTrash } from "@tabler/icons-react";
 
-const TodoCard = ({ title, priority, due_date, is_completed, daysLeft }) => {
+const TodoCard = ({
+  title,
+  priority,
+  due_date,
+  is_completed,
+  daysLeft,
+  id,
+  setChange,
+  change,
+}) => {
   let badgeContent;
   switch (true) {
     case daysLeft < 0 && is_completed === false:
@@ -43,6 +55,19 @@ const TodoCard = ({ title, priority, due_date, is_completed, daysLeft }) => {
       priorityContent = "green";
       break;
   }
+  const [cookies] = useCookies(["userId"]);
+  const ChangeStatus = async (id) => {
+    try {
+      const { data } = await axios.patch(
+        `${SERVER_URL}/todos/${cookies.userId}/${id}`,
+        ""
+      );
+      setChange(!change);
+    } catch (err) {
+      alert("Cannot change status");
+      console.log(err);
+    }
+  };
 
   return (
     <Grid.Col xs={12} md={6} lg={4}>
@@ -84,6 +109,7 @@ const TodoCard = ({ title, priority, due_date, is_completed, daysLeft }) => {
             fullWidth
             variant="outline"
             color={is_completed == false ? "blue" : "red"}
+            onClick={() => ChangeStatus(id)}
           >
             {is_completed == false ? "Mark as done" : "Delete"}
           </Button>
