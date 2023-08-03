@@ -10,7 +10,7 @@ dotenv.config();
 
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:3000", "https://organize-me-jet.vercel.app"],
     methods: ["POST", "GET", "DELETE", "PATCH", "PUT"],
     credentials: true,
   })
