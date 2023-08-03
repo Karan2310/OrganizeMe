@@ -9,7 +9,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <CookiesProvider>
-      <MantineProvider withGlobalStyles withNormalizeCSS>
+      <MantineProvider
+        withGlobalStyles
+        withNormalizeCSS
+        theme={{ colorScheme: "" }}
+      >
         <App />
       </MantineProvider>
     </CookiesProvider>

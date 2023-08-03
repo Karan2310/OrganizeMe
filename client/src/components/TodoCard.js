@@ -17,6 +17,9 @@ const TodoCard = ({ title, priority, due_date, is_completed, daysLeft }) => {
     case daysLeft < 0 && is_completed === false:
       badgeContent = <Badge color="red">OVERDUE</Badge>;
       break;
+    case daysLeft > 0 && is_completed === true:
+      badgeContent = <Badge color="gray">Completed</Badge>;
+      break;
     case daysLeft < 0:
       badgeContent = <Badge color="gray">{Math.abs(daysLeft)} days ago</Badge>;
       break;

@@ -3,12 +3,14 @@ import TodoCard from "../components/TodoCard";
 import { Grid } from "@mantine/core";
 
 const TasksCompleted = ({ Todos }) => {
+  const completedTodos = Todos.filter((todo) => todo.is_completed);
   return (
     <div>
       <Grid gutter="xl">
-        {Todos &&
-          Todos.sort((b, a) => new Date(a.due_date) - new Date(b.due_date)).map(
-            (todo, index) => {
+        {completedTodos &&
+          completedTodos
+            .sort((b, a) => new Date(a.due_date) - new Date(b.due_date))
+            .map((todo, index) => {
               const { title, priority, due_date, is_completed } = todo;
               const oneDay = 24 * 60 * 60 * 1000;
               const currentDate = new Date();
@@ -26,8 +28,7 @@ const TasksCompleted = ({ Todos }) => {
                   is_completed={is_completed}
                 />
               );
-            }
-          )}
+            })}
       </Grid>
     </div>
   );
