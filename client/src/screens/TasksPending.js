@@ -3,7 +3,7 @@ import TodoCard from "../components/TodoCard";
 import { Grid } from "@mantine/core";
 
 const TasksPending = ({ Todos }) => {
-  const incompleteTodos = Todos.filter((todo) => !todo.is_completed);
+  const incompleteTodos = Todos && Todos.filter((todo) => !todo.is_completed);
   return (
     <div>
       <Grid gutter="xl">
