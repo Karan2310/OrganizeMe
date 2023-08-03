@@ -12,7 +12,10 @@ const TasksCompleted = ({ Todos }) => {
               const { title, priority, due_date, is_completed } = todo;
               const oneDay = 24 * 60 * 60 * 1000;
               const currentDate = new Date();
-              const daysLeft = Math.round((due_date - currentDate) / oneDay);
+              const dueDateObject = new Date(due_date); // Parse or convert due_date to Date object
+              const daysLeft = Math.round(
+                (dueDateObject - currentDate) / oneDay
+              );
               return (
                 <TodoCard
                   key={index}
