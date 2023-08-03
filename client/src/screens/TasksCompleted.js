@@ -16,7 +16,7 @@ const TasksCompleted = ({ Todos, setChange, change }) => {
           color: "#808080",
         }}
       >
-        <h1>{`No tasks completed（>﹏<）`}</h1>
+        <h1>No tasks completed!</h1>
       </div>
     );
   }
