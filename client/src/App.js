@@ -3,6 +3,7 @@ import { Navigation } from "./components/Navigation.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import TasksCompleted from "./screens/TasksCompleted";
 import TasksPending from "./screens/TasksPending";
+import AddTodo from "./components/AddTodo";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         width: "100%",
       }}
     >
+      <AddTodo />
       <BrowserRouter>
         <Navigation />
         <div
