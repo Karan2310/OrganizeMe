@@ -65,7 +65,12 @@ export const verifyUser = async (req, res) => {
 
       res
         .status(200)
-        .json({ id: user._id, name: user.name, email: user.email });
+        .json({
+          id: user._id,
+          name: user.name,
+          email: user.email,
+          todos: user.todos,
+        });
     } catch (error) {
       return res.status(401).json({ msg: "Token is not valid" });
     }

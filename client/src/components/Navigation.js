@@ -15,6 +15,7 @@ import {
   IconLogout,
 } from "@tabler/icons-react";
 import { NavLink, useLocation } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -72,6 +73,8 @@ export function Navigation() {
   const [active, setActive] = useState(0);
   const location = useLocation();
 
+  const [cookies, removeCookie] = useCookies(["token", "userId"]);
+
   useEffect(() => {
     const activeTab = tabs.findIndex((tab) => tab.path === location.pathname);
     setActive(activeTab !== -1 ? activeTab : 0);
@@ -102,7 +105,15 @@ export function Navigation() {
       </Navbar.Section>
       <Navbar.Section>
         <Stack justify="center" spacing={0}>
-          <NavbarLink icon={IconLogout} label="Logout" />
+          <NavbarLink
+            icon={IconLogout}
+            label="Logout"
+            onClick={() => {
+              removeCookie("token");
+              removeCookie("userId");
+              window.location.href = "/login";
+            }}
+          />
         </Stack>
       </Navbar.Section>
     </Navbar>

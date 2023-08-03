@@ -2,52 +2,13 @@ import React from "react";
 import TodoCard from "../components/TodoCard";
 import { Grid } from "@mantine/core";
 
-const TasksPending = () => {
-  const todo = [
-    {
-      title: "Sample Todo",
-      priority: "high",
-      due_date: new Date("2023-08-10"),
-      is_completed: false,
-    },
-    {
-      title: "Sample Todo",
-      priority: "high",
-      due_date: new Date("2023-08-01"),
-      is_completed: false,
-    },
-    {
-      title: "Sample Todo",
-      priority: "low",
-      due_date: new Date("2023-08-14"),
-      is_completed: false,
-    },
-    {
-      title: "wjdbfiu yrgfiwyegdf icgeoiudhcdfocndfoicjneoidjnfbb gif",
-      priority: "medium",
-      due_date: new Date("2023-08-04"),
-      is_completed: false,
-    },
-    {
-      title: "Sample Todo",
-      priority: "low",
-      due_date: new Date("2023-08-10"),
-      is_completed: false,
-    },
-    {
-      title: "Sample Todo",
-      priority: "medium",
-      due_date: new Date("2029-09-10"),
-      is_completed: false,
-    },
-  ];
+const TasksPending = ({ Todos }) => {
   return (
     <div>
       <Grid gutter="xl">
-        {todo &&
-          todo
-            .sort((a, b) => new Date(a.due_date) - new Date(b.due_date))
-            .map((todo, index) => {
+        {Todos &&
+          Todos.sort((a, b) => new Date(a.due_date) - new Date(b.due_date)).map(
+            (todo, index) => {
               const { title, priority, due_date, is_completed } = todo;
               const oneDay = 24 * 60 * 60 * 1000;
               const currentDate = new Date();
@@ -62,7 +23,8 @@ const TasksPending = () => {
                   is_completed={is_completed}
                 />
               );
-            })}
+            }
+          )}
       </Grid>
     </div>
   );

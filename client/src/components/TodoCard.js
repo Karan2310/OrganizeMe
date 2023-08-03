@@ -73,7 +73,7 @@ const TodoCard = ({ title, priority, due_date, is_completed, daysLeft }) => {
             {title}
           </Text>
           <Text size="sm" color="dimmed" mt={5} fw={500}>
-            Due Date: {due_date.toLocaleDateString()}
+            Due Date: {new Date(due_date).toLocaleDateString()}
           </Text>
         </div>
         <Box mt={20}>
