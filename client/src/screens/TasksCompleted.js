@@ -4,6 +4,23 @@ import { Grid } from "@mantine/core";
 
 const TasksCompleted = ({ Todos, setChange, change }) => {
   const completedTodos = Todos && Todos.filter((todo) => todo.is_completed);
+
+  if (completedTodos && completedTodos.length == 0) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100%",
+          color: "#808080",
+        }}
+      >
+        <h1>No tasks completed!</h1>
+      </div>
+    );
+  }
+
   return (
     <div>
       <Grid gutter="xl">
