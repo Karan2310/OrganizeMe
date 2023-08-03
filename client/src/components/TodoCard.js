@@ -30,10 +30,13 @@ const TodoCard = ({
       badgeContent = <Badge color="red">OVERDUE</Badge>;
       break;
     case daysLeft > 0 && is_completed === true:
-      badgeContent = <Badge color="gray">Completed</Badge>;
+      badgeContent = <Badge color="gray">Completed Early</Badge>;
       break;
     case daysLeft < 0:
       badgeContent = <Badge color="gray">{Math.abs(daysLeft)} days ago</Badge>;
+      break;
+    case daysLeft === 0 && is_completed === true:
+      badgeContent = <Badge color="gray">Completed</Badge>;
       break;
     case daysLeft === 0:
       badgeContent = <Badge color="yellow">DUE Today</Badge>;

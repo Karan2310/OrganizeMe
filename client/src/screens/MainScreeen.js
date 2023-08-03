@@ -50,6 +50,8 @@ const MainScreeen = () => {
         }}
       >
         <Navigation />
+        {/* {user && user.Todos.length === 0 ? "No todos" : ""} */}
+
         <div
           className=""
           style={{
