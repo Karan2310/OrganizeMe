@@ -16,7 +16,7 @@ const TasksPending = ({ Todos, setChange, change }) => {
           color: "#808080",
         }}
       >
-        <h1>All tasks completed</h1>
+        <h1>All tasks completed :)</h1>
       </div>
     );
   }
