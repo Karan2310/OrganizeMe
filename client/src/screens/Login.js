@@ -131,7 +131,7 @@ export default function Login(PaperProps) {
         }}
       >
         <Text size="lg" weight={500}>
-          Welcome to Inked Pages
+          Welcome to OrganizedMe
         </Text>
 
         <Divider my="lg"></Divider>

@@ -3,10 +3,20 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth.js";
 import todoRoutes from "./routes/todos.js";
+import cors from "cors";
 
 const app = express();
-app.use(express.json());
 dotenv.config();
+
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["POST", "GET", "DELETE", "PATCH", "PUT"],
+    credentials: true,
+  })
+);
+
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.json("Hello World");

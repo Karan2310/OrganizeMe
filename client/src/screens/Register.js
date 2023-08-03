@@ -42,28 +42,34 @@ export default function Register(PaperProps) {
           : null,
     },
   });
-
   const handleSubmit = async (values) => {
+    console.log(values);
     setLoading(true);
     try {
       const { data } = await axios.post(`${SERVER_URL}/auth/register`, values);
-      setNotificationVisible({
-        title: "User created successfully",
-        visible: true,
-        color: "green",
-        icon: <IconCheck />,
-        message: data.message,
-      });
-      setTimeout(() => {
-        Navigate("/login");
-      }, 3000);
+      if (data && data.message) {
+        setNotificationVisible({
+          title: "User created successfully",
+          visible: true,
+          color: "green",
+          icon: <IconCheck />,
+          message: data.message,
+        });
+        setTimeout(() => {
+          Navigate("/login");
+        }, 3000);
+      } else {
+        throw new Error("Invalid response from the server");
+      }
     } catch (err) {
+      const errorMessage =
+        err.response?.data?.message || "Something went wrong";
       setNotificationVisible({
         title: "Something went wrong",
         visible: true,
         color: "red",
         icon: <IconX />,
-        message: err.response.data.message,
+        message: errorMessage,
       });
     }
     setLoading(false);
@@ -115,7 +121,7 @@ export default function Register(PaperProps) {
         }}
       >
         <Text size="lg" weight={500}>
-          Register for Inked Pages
+          Register for OrganizedMe
         </Text>
 
         <Divider my="lg"></Divider>
@@ -123,7 +129,7 @@ export default function Register(PaperProps) {
         <form
           onSubmit={form.onSubmit((value) => {
             handleSubmit(value);
-            form.reset();
+            // form.reset();
           })}
         >
           <Stack>
