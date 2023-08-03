@@ -95,7 +95,7 @@ export function Navigation() {
     <Navbar height={"100%"} width={{ base: 80 }} p="md">
       <Center>
         <Avatar color="blue" radius="xl" size={"2.5rem"}>
-          MK
+          T
         </Avatar>
       </Center>
       <Navbar.Section grow mt={50}>
