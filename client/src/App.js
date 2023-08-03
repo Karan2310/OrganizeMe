@@ -1,40 +1,20 @@
 import "./App.css";
 import { Navigation } from "./components/Navigation.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import TasksCompleted from "./screens/TasksCompleted";
-import TasksPending from "./screens/TasksPending";
 import AddTodo from "./components/AddTodo";
+import MainScreeen from "./screens/MainScreeen";
+import Login from "./screens/Login";
+import Register from "./screens/Register";
 
 function App() {
   return (
-    <div
-      className="App"
-      style={{
-        display: "flex",
-        height: "100vh",
-        overflow: "hidden",
-        width: "100%",
-      }}
-    >
-      <AddTodo />
-      <BrowserRouter>
-        <Navigation />
-        <div
-          className=""
-          style={{
-            padding: "1rem",
-            height: "100%",
-            overflowY: "scroll",
-            width: "100%",
-          }}
-        >
-          <Routes>
-            <Route path="/" element={<TasksPending />} />
-            <Route path="/completed" element={<TasksCompleted />} />
-          </Routes>
-        </div>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/*" element={<MainScreeen />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
