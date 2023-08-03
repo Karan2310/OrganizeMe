@@ -69,6 +69,18 @@ const TodoCard = ({
     }
   };
 
+  const DeleteTodo = async (id) => {
+    try {
+      const { data } = await axios.delete(
+        `${SERVER_URL}/todos/${cookies.userId}/${id}`
+      );
+      setChange(!change);
+    } catch (err) {
+      alert("Cannot Delete Todo!");
+      console.log(err);
+    }
+  };
+
   return (
     <Grid.Col xs={12} md={6} lg={4}>
       <Card
@@ -92,7 +104,7 @@ const TodoCard = ({
 
               {!is_completed && (
                 <ActionIcon color="red" size={"1.6rem"} ml={10} p={3}>
-                  <IconTrash />
+                  <IconTrash onClick={() => DeleteTodo(id)} />
                 </ActionIcon>
               )}
             </div>
@@ -104,15 +116,33 @@ const TodoCard = ({
             Due Date: {new Date(due_date).toLocaleDateString()}
           </Text>
         </div>
-        <Box mt={20}>
+        <Box
+          mt={20}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
           <Button
             fullWidth
+            mr={10}
             variant="outline"
-            color={is_completed == false ? "blue" : "red"}
+            color={is_completed == false ? "green" : "yellow"}
             onClick={() => ChangeStatus(id)}
           >
-            {is_completed == false ? "Mark as done" : "Delete"}
+            {is_completed == false ? "Mark as done" : "Mark as Incomplete"}
           </Button>
+          {is_completed && (
+            <Button
+              fullWidth
+              variant="outline"
+              color={"red"}
+              onClick={() => DeleteTodo(id)}
+            >
+              Delete
+            </Button>
+          )}
         </Box>
       </Card>
     </Grid.Col>
