@@ -49,7 +49,7 @@ const MainScreeen = ({ theme, SetTheme }) => {
           width: "100%",
         }}
       >
-        <Navigation theme={theme} SetTheme={SetTheme} />
+        <Navigation theme={theme} SetTheme={SetTheme} user={user} />
 
         <div
           className=""

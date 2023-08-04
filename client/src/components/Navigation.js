@@ -72,7 +72,7 @@ const tabs = [
   { icon: IconCircleCheckFilled, label: "Tasks Completed", path: "/completed" },
 ];
 
-export function Navigation({ theme, SetTheme }) {
+export function Navigation({ theme, SetTheme, user }) {
   const [active, setActive] = useState(0);
   const location = useLocation();
 
@@ -97,9 +97,16 @@ export function Navigation({ theme, SetTheme }) {
   return (
     <Navbar height={"100%"} width={{ base: 80 }} p="md">
       <Center>
-        <Avatar color="blue" radius="xl" size={"2.5rem"}>
-          T
-        </Avatar>
+        <Tooltip
+          label={user && user.email}
+          color="blue"
+          position="bottom"
+          withArrow
+        >
+          <Avatar color="blue" radius="xl" size={"2.5rem"}>
+            {user && user.name ? user.name.toUpperCase().charAt(0) : ""}
+          </Avatar>
+        </Tooltip>
       </Center>
       <Navbar.Section grow mt={50}>
         <Stack justify="center" spacing={0}>
