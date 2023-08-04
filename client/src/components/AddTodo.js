@@ -80,7 +80,7 @@ const AddTodo = ({ change, setChange }) => {
         closeOnEscape={false}
         title="Add Todo"
         zIndex={100}
-        portal
+        portal="true"
         sx={{
           ".mantine-Modal-content": {
             overflowY: "visible",
@@ -89,7 +89,7 @@ const AddTodo = ({ change, setChange }) => {
       >
         <form onSubmit={form.onSubmit((values) => addBlog(values))}>
           <TextInput
-            data-autoFocus
+            data-autofocus
             withAsterisk
             label="Todo"
             placeholder="Enter Your Todo here"
@@ -122,7 +122,7 @@ const AddTodo = ({ change, setChange }) => {
             maw={400}
             mx="auto"
             position="bottom"
-            inputFormat="yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
+            inputformat="yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
             error={form.errors.due_date}
           />
 
