@@ -1,10 +1,10 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client"; // Updated import
 import "./index.css";
 import App from "./App";
 import { CookiesProvider } from "react-cookie";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = createRoot(document.getElementById("root")); // Use createRoot directly
 root.render(
   <React.StrictMode>
     <CookiesProvider>
