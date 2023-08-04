@@ -72,13 +72,16 @@ export default function Login(PaperProps) {
         Navigate("/");
       }, 1000);
     } catch (err) {
-      console.log(err.response);
+      console.log(err);
       setNotificationVisible({
         title: "Something went wrong",
         visible: true,
         color: "red",
         icon: <IconX />,
-        message: err.response.data.msg,
+        message:
+          err && err.response && err.response.data && err.response.data.msg
+            ? err.response.data.msg
+            : "An error occurred.",
       });
     }
     setLoading(false);
