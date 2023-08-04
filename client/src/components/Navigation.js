@@ -8,11 +8,14 @@ import {
   Stack,
   Avatar,
   rem,
+  ActionIcon,
 } from "@mantine/core";
 import {
   IconCircleCheckFilled,
   IconChecklist,
   IconLogout,
+  IconMoon,
+  IconSun,
 } from "@tabler/icons-react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useCookies } from "react-cookie";
@@ -69,7 +72,7 @@ const tabs = [
   { icon: IconCircleCheckFilled, label: "Tasks Completed", path: "/completed" },
 ];
 
-export function Navigation() {
+export function Navigation({ theme, SetTheme }) {
   const [active, setActive] = useState(0);
   const location = useLocation();
 
@@ -105,6 +108,11 @@ export function Navigation() {
       </Navbar.Section>
       <Navbar.Section>
         <Stack justify="center" spacing={0}>
+          <NavbarLink
+            icon={theme === "light" ? IconMoon : IconSun}
+            label={`${theme == "dark" ? "Light" : "Dark"} mode`}
+            onClick={SetTheme}
+          />
           <NavbarLink
             icon={IconLogout}
             label="Logout"

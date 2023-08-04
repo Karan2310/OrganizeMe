@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { SERVER_URL } from "../config";
 
-const MainScreeen = () => {
+const MainScreeen = ({ theme, SetTheme }) => {
   const [user, setUser] = useState({});
   const [cookies, removeCookie] = useCookies(["token", "userId"]);
   const [change, setChange] = useState(true);
@@ -49,8 +49,7 @@ const MainScreeen = () => {
           width: "100%",
         }}
       >
-        <Navigation />
-        {/* {user && user.Todos.length === 0 ? "No todos" : ""} */}
+        <Navigation theme={theme} SetTheme={SetTheme} />
 
         <div
           className=""

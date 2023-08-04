@@ -1,20 +1,54 @@
-import "./App.css";
-import { Navigation } from "./components/Navigation.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AddTodo from "./components/AddTodo";
 import MainScreeen from "./screens/MainScreeen";
 import Login from "./screens/Login";
 import Register from "./screens/Register";
+import { useEffect, useState } from "react";
+import { MantineProvider } from "@mantine/core";
 
 function App() {
+  const [theme, setTheme] = useState("light");
+
+  const setCurrTheme = () => {
+    const currTheme = localStorage.getItem("theme");
+    if (!currTheme) {
+      localStorage.setItem("theme", "light");
+      setTheme("light");
+    } else {
+      setTheme(currTheme);
+    }
+  };
+
+  const ToggleTheme = () => {
+    if (theme == "light") {
+      localStorage.setItem("theme", "dark");
+      setTheme("dark");
+    } else {
+      localStorage.setItem("theme", "light");
+      setTheme("light");
+    }
+  };
+
+  useEffect(() => {
+    setCurrTheme();
+  }, [theme]);
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/*" element={<MainScreeen />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-    </BrowserRouter>
+    <MantineProvider
+      withGlobalStyles
+      withNormalizeCSS
+      theme={{ colorScheme: theme }}
+    >
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/*"
+            element={<MainScreeen theme={theme} SetTheme={ToggleTheme} />}
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </BrowserRouter>
+    </MantineProvider>
   );
 }
 
