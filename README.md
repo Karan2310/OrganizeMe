@@ -18,6 +18,9 @@ https://github.com/Karan2310/OrganizeMe/assets/72909842/67b21d03-2131-4eea-bc3d-
 <img width="1469" alt="Screenshot 2023-08-03 at 6 16 26 PM" src="https://github.com/Karan2310/OrganizeMe/assets/72909842/c30a4edd-62f0-4256-b2e5-c3b880ee1ff8">
 <img width="1469" alt="Screenshot 2023-08-03 at 6 15 57 PM" src="https://github.com/Karan2310/OrganizeMe/assets/72909842/e9ad2532-e649-41a6-ab24-5448828ce206">
 
+## Dark Mode 
+<img width="1469" alt="Screenshot 2023-08-04 at 5 45 57 PM" src="https://github.com/Karan2310/OrganizeMe/assets/72909842/2f8da4c8-9681-4e99-a055-7a138ce29b25">
+
 
 
 
