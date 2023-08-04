@@ -79,7 +79,7 @@ const AddTodo = ({ change, setChange }) => {
         onClose={() => setOpened(false)}
         closeOnEscape={false}
         title="Add Todo"
-        zIndex={100}
+        zIndex={1000}
         portal="true"
         sx={{
           ".mantine-Modal-content": {
