@@ -85,7 +85,7 @@ const TodoCard = ({
   };
 
   return (
-    <Grid.Col xs={12} md={6} lg={4}>
+    <Grid.Col xs={12} sm={6} md={6} lg={4}>
       <Card
         withBorder
         padding="lg"
