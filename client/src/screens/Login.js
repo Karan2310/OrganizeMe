@@ -134,7 +134,7 @@ export default function Login(PaperProps) {
         }}
       >
         <Text size="lg" weight={500}>
-          Welcome to OrganizedMe
+          Welcome to Organize Me
         </Text>
 
         <Divider my="lg"></Divider>

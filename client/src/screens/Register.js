@@ -121,7 +121,7 @@ export default function Register(PaperProps) {
         }}
       >
         <Text size="lg" weight={500}>
-          Register for OrganizedMe
+          Register for Organize Me
         </Text>
 
         <Divider my="lg"></Divider>
