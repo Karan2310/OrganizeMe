@@ -11,6 +11,10 @@ Welcome to the MERN Todo App! This is a full-stack web application built using t
 ## Demo
 
 Explore the [Live Demo](https://organize-me-jet.vercel.app) to see FotoFolio in action.
+**Test Credentials:**
+- **Email:** test@test.com
+- **Password:** password
+
 
 https://github.com/Karan2310/OrganizeMe/assets/72909842/67b21d03-2131-4eea-bc3d-bdb4a048d383
 
