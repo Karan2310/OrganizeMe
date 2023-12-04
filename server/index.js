@@ -10,7 +10,7 @@ dotenv.config();
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://192.168.0.110:8001"],
+    origin: "*",
     methods: ["POST", "GET", "DELETE", "PATCH", "PUT"],
     credentials: true,
   })
@@ -27,7 +27,7 @@ app.use("/todos", todoRoutes);
 
 async function startServer() {
   try {
-    await mongoose.connect(process.env.MONGODB_URL, {
+    await mongoose.connect(process.env.MONGO_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
